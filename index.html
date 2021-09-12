@@ -1,0 +1,50 @@
+<html>
+<head>
+<style type="text/css">
+	applet {
+		border: 1pt solid #000;
+	}
+</style>
+</head>
+<body>
+	<applet id="myFirstApplet" code="First.class" width="300" height="300"> 
+	</applet> 
+	<br/>
+	<button onclick="decreaseDiameter()">Decrease</button>
+	<button onclick="increaseDiameter()">Increase</button>
+	<br/>
+	Radius: <span id="radiusDisplay"></span>px.
+	<br/>
+	Circumference: <span id="circumferenceDisplay"></span>px.
+	
+	<script type="text/javascript">
+		var diameter = 100;
+		
+		updateDiameter();
+		
+		function updateDiameter() {
+			document.getElementById('myFirstApplet').setDiameter(diameter);
+		}
+		
+		function decreaseDiameter() {
+			diameter -= 5;
+			
+			if (diameter < 0) {
+				diameter = 0;
+			}
+			
+			updateDiameter();
+		}
+		
+		function increaseDiameter() {
+			diameter += 5;
+			updateDiameter();
+		}
+		
+		function renderRadiusAndCircumference(radius, circumference) {
+			document.getElementById('radiusDisplay').innerHTML = Math.round(radius * 100) / 100;
+			document.getElementById('circumferenceDisplay').innerHTML = Math.round(circumference * 100) / 100;
+		}
+	</script>
+</body>
+</html>
